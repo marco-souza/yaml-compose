@@ -5,8 +5,9 @@
   "license": "MIT",
   "tasks": {
     "run": "deno run --allow-read --allow-write --watch main.ts",
-    "test": "deno test --watch main.ts",
     "install": "deno compile --allow-read --allow-write -o $HOME/.local/bin/yaml-compose main.ts",
+    "lint": "deno fmt && deno lint",
+    "test": "deno test --watch main.ts",
     "coverage": "deno test --coverage=reports/coverage && deno coverage reports/coverage"
   },
   "imports": {
