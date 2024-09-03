@@ -1,8 +1,8 @@
-import { execSync } from "@m3o/results";
+import { execSync } from "./results.ts";
 
 type Options = {
   /**
-   * The path to the folder
+   * The path to the folder containing the YAML files
    */
   path: string;
   /**
@@ -17,13 +17,13 @@ type Options = {
  * ```ts
  * import { yamlCompose } from "jsr:@m3o/yaml-mere";
  *
- * yamlCompose({
+ * merge({
  *   path: "./folder",
  *   output: "./output.yaml"
  * });
  * ```
  */
-export function yamlCompose(opts: Options) {
+export function merge(opts: Options) {
   const yamlFilesRes = execSync(() => {
     const allFiles = Deno.readDirSync(opts.path);
     const yamlFiles = Array.from(allFiles).filter((file) =>
@@ -85,9 +85,3 @@ export function yamlCompose(opts: Options) {
     }
   }
 }
-
-const originalErr = console.error;
-// deno-lint-ignore no-explicit-any
-console.error = (...data: any[]) => {
-  originalErr("❌", ...data);
-};

@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.217.0/assert/mod.ts";
-import { exec, execSync } from "./mod.ts";
+import { exec, execSync } from "./results.ts";
 
-Deno.test("@m3o/results", async (t) => {
+Deno.test("./reslts.ts", async (t) => {
   await t.step("sync execution", () => {
     const res = execSync(() => 1);
     assertEquals(res.result, 1);

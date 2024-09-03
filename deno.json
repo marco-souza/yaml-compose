@@ -3,17 +3,13 @@
   "version": "0.1.0",
   "exports": "./main.ts",
   "license": "MIT",
-  "imports": {
-    "path": "jsr:@std/path@1.0.3"
-  },
   "tasks": {
     "run": "deno run --allow-read --allow-write --watch main.ts",
     "test": "deno test --watch main.ts",
     "install": "deno compile --allow-read --allow-write -o $HOME/.local/bin/yaml-compose main.ts",
     "coverage": "deno test --coverage=reports/coverage && deno coverage reports/coverage"
   },
-  "workspace": [
-    "packages/results",
-    "packages/yaml-merge"
-  ]
+  "imports": {
+    "@std/path": "jsr:@std/path@^1.0.3"
+  }
 }

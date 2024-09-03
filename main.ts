@@ -8,10 +8,13 @@
  * deno run --allow-read --allow-write main.ts ./folder ./output.yaml
  * ```
  */
-import { yamlCompose } from "@m3o/yaml-merge";
-import * as path from "path";
+import * as path from "@std/path";
+import { merge } from "./yaml.ts";
 
-if (import.meta.main) {
+/**
+ * This function is the main function for the CLI script.
+ */
+function main() {
   let [folder, output] = Deno.args ?? [];
   if (!folder || !output) {
     console.error("You need to pass the folder and output file");
@@ -23,8 +26,10 @@ if (import.meta.main) {
   output = path.resolve(dirname, output);
 
   console.log(`Composing YAML file from ${folder}...`);
-  yamlCompose({ path: folder, output });
+  merge({ path: folder, output });
 
   console.log(`YAML file composed (${output})! 🎉`);
   Deno.exit(0);
 }
+
+if (import.meta.main) main();
