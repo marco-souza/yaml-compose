@@ -17,4 +17,4 @@ jobs:
       - run: gh release create -t $version -n "Release $version" $version
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ github.ref }}
+          version: ${{ github.ref | replace('refs/tags/', '')}}
