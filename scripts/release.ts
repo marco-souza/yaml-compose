@@ -26,9 +26,9 @@ const commitNewVersion = new Deno.Command("git", {
   args: ["commit", "-am", `Bump version to ${newVersion}`],
 });
 const output = await commitNewVersion.output();
-
 if (!output.success) {
   console.error("Failed to commit new version");
+  console.error(new TextDecoder().decode(output.stderr));
   Deno.exit(1);
 }
 
@@ -38,6 +38,7 @@ const tagNewVersion = new Deno.Command("git", { args: ["tag", newVersion] });
 const tagOutput = await tagNewVersion.output();
 if (!tagOutput.success) {
   console.error("Failed to tag new version");
+  console.error(new TextDecoder().decode(tagOutput.stderr));
   Deno.exit(1);
 }
 
