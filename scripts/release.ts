@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read --allow-writ
+#!/usr/bin/env -S deno run --allow-read --allow-write --allow-run
 
 import { type ReleaseKind, Semver } from "../semver.ts";
 
