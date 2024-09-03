@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read --allow-writ
+#!/usr/bin/env -S deno run --allow-read --allow-write --allow-run
 
 import { type ReleaseKind, Semver } from "../semver.ts";
 
@@ -23,7 +23,7 @@ Deno.writeFileSync(
 console.log(`Bumped version from ${currentVersion} to ${newVersion}`);
 
 const commitNewVersion = new Deno.Command("git", {
-  args: ["commit", "-am", `'Bump version to ${newVersion}'`],
+  args: ["commit", "-am", `Bump version to ${newVersion}`],
 });
 const output = await commitNewVersion.output();
 
