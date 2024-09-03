@@ -1,4 +1,4 @@
-type ReleaseKind = "major" | "minor" | "patch";
+export type ReleaseKind = "major" | "minor" | "patch";
 
 const SEMVER_RE = /^\d+\.\d+\.\d+$/;
 
