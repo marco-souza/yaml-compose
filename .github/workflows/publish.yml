@@ -14,11 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npx jsr publish
-      - run: |
+
+  release:
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - uses: actions/checkout@v4
+      - name: parse tag name
+        run: |
           version=$(echo $tag | sed 's/refs\/tags\///')
           echo "Creating release $version"
-          gh release create -t $version -n "Release $version" $version
-          echo "Release $version created"
+          echo "version=$version" >> $GITHUB_ENV
+        env:
+          tag: ${{ github.ref }}
+      - name: create release
+        run: gh release create -t $version --generate-notes "Release $version 🚀 "
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
+          version: ${{ env.version }}
