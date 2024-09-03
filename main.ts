@@ -1,36 +1,30 @@
 /**
  * @module
  *
- * This module contains a function to check if you are acting first and thinking later
+ * This module contains a CLI script for composing a YAML file from a folder into a unique file.
  *
- *    *
- * ```ts
- * import { act } from "jsr:@act/act";
- *
- * act("act first, think later") // true
- * act("think first, act later") // false
- * act("don't act") // false
+ * @example
+ * ```sh
+ * deno run --allow-read --allow-write main.ts ./folder ./output.yaml
  * ```
  */
-
-/**
- * This function receives a text and literally check if you are act first and think later
- *
- * ```ts
- * import { act } from "jsr:@act/act";
- *
- * act("act first, think later") // true
- * act("think first, act later") // false
- * act("don't act") // false
- * ````
- */
-export function act(action: string): boolean {
-  const actIndex = action.toLowerCase().indexOf("act");
-  const thinkIndex = action.toLowerCase().indexOf("think");
-  return actIndex < thinkIndex;
-}
+import { yamlCompose } from "@m3o/yaml-compose";
+import * as path from "path";
 
 if (import.meta.main) {
-  const text = Deno.args.join() ?? "act first, think later";
-  console.log(act(text) ? "🤩" : "😭");
+  let [folder, output] = Deno.args ?? [];
+  if (!folder || !output) {
+    console.error("You need to pass the folder and output file");
+    Deno.exit(1);
+  }
+
+  const dirname = Deno.cwd();
+  folder = path.resolve(dirname, folder);
+  output = path.resolve(dirname, output);
+
+  console.log(`Composing YAML file from ${folder}...`);
+  yamlCompose({ path: folder, output });
+
+  console.log(`YAML file composed (${output})! 🎉`);
+  Deno.exit(0);
 }
