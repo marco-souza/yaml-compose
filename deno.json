@@ -8,7 +8,7 @@
     "install": "deno compile --allow-read --allow-write -o $HOME/.local/bin/yaml-compose main.ts",
     "lint": "deno fmt && deno lint",
     "test": "deno test --watch **/*_test.ts",
-    "release": "./scripts/release.ts",
+    "release": "deno run -A jsr:@m3o/version",
     "publish": "git push && git push --tags",
     "coverage": "deno test --coverage=reports/coverage && deno coverage reports/coverage"
   },
