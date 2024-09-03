@@ -16,4 +16,3 @@ npx jsr add @m3o/yaml-compose
 # with bun
 bux jsr add @m3o/yaml-compose
 ```
-
