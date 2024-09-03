@@ -19,8 +19,9 @@ Deno.test("./reslts.ts", async (t) => {
     assertEquals(res.result, 1);
     assertEquals(res.error, null);
 
+    // deno-lint-ignore require-await
     const errorRes = await exec(async () => {
-      await Promise.reject("error");
+      throw new Error("error");
     });
     assertEquals(errorRes.result, null);
     assertEquals(errorRes.error?.message, "error");
