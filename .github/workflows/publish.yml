@@ -14,7 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npx jsr publish
-      - run: gh release create -t $version -n "Release $version" $version
+      - run: |
+          version=$(echo $tag | sed 's/refs\/tags\///')
+          echo "Creating release $version"
+          gh release create -t $version -n "Release $version" $version
+          echo "Release $version created"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ github.ref | replace('refs/tags/', '')}}
+          tag: ${{ github.ref }}
