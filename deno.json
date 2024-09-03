@@ -2,8 +2,9 @@
   "name": "@m3o/yaml-compose",
   "version": "0.1.0",
   "exports": "./main.ts",
+  "license": "MIT",
   "imports": {
-    "path": "jsr:@std/path"
+    "path": "jsr:@std/path@1.0.3"
   },
   "tasks": {
     "run": "deno run --allow-read --allow-write --watch main.ts",
