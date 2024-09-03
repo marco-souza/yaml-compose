@@ -8,7 +8,7 @@
  * deno run --allow-read --allow-write main.ts ./folder ./output.yaml
  * ```
  */
-import { yamlCompose } from "@m3o/yaml-compose";
+import { yamlCompose } from "@m3o/yaml-merge";
 import * as path from "path";
 
 if (import.meta.main) {

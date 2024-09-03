@@ -1,4 +1,4 @@
-import { exec, execSync } from "@m3o/results";
+import { execSync } from "@m3o/results";
 
 type Options = {
   /**
@@ -15,7 +15,7 @@ type Options = {
  * This function receives a path and output file to compose a yaml file
  *
  * ```ts
- * import { yamlCompose } from "jsr:@m3o/yaml-compose";
+ * import { yamlCompose } from "jsr:@m3o/yaml-mere";
  *
  * yamlCompose({
  *   path: "./folder",

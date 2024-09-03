@@ -1,5 +1,5 @@
 {
-  "name": "yaml-compose",
+  "name": "@m3o/yaml-compose",
   "version": "0.1.0",
   "exports": "./main.ts",
   "imports": {
@@ -13,6 +13,6 @@
   },
   "workspace": [
     "packages/results",
-    "packages/yaml-compose"
+    "packages/yaml-merge"
   ]
 }

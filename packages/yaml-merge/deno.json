@@ -1,5 +1,5 @@
 {
-  "name": "@m3o/yaml-compose",
+  "name": "@m3o/yaml-merge",
   "version": "0.1.0",
   "exports": "./mod.ts",
   "tasks": {
